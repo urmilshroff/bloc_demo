@@ -1,9 +1,9 @@
 class Student {
   int _rollNumber;
   String _name;
-  int _marks;
+  double _gpa;
 
-  Student(this._rollNumber, this._name, this._marks);
+  Student(this._rollNumber, this._name, this._gpa);
 
   set rollNumber(int rollNumber) {
     this._rollNumber = rollNumber;
@@ -13,7 +13,7 @@ class Student {
     this._name = name;
   }
 
-  set marks(int marks) {
-    this._marks = marks;
+  set gpa(double gpa) {
+    this._gpa = gpa;
   }
 }
