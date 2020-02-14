@@ -5,19 +5,19 @@ import 'package:flutter/cupertino.dart';
 
 class Weather extends Equatable {
   final String cityName;
-  final double celcius;
-  final double farenheit;
+  final double celsius;
+  final double fahrenheit;
 
   Weather({
     @required this.cityName,
-    @required this.celcius,
-    this.farenheit,
+    @required this.celsius,
+    this.fahrenheit,
   });
 
   @override
   List<Object> get props => [
         cityName,
-        celcius,
-        farenheit,
+        celsius,
+        fahrenheit,
       ];
 }
