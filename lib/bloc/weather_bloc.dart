@@ -4,7 +4,7 @@ import 'package:bloc_demo/bloc/weather_state.dart';
 import 'package:bloc_demo/model/weather_repository.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
-    final WeatherRepository weatherRepository;
+  final WeatherRepository weatherRepository;
 
   WeatherBloc(this.weatherRepository);
 
@@ -13,6 +13,21 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
 
   @override
   Stream<WeatherState> mapEventToState(WeatherEvent event) async* {
-    // TODO: implement mapEventToState
+    if (event is GetBasicWeather) {
+      try {
+        final weather = await weatherRepository.fetchWeather(event.cityName);
+        yield WeatherBasicState(weather);
+      } on NetworkError {
+        yield WeatherError('Error');
+      }
+    } else if (event is GetDetailedWeather) {
+      try {
+        final weather =
+            await weatherRepository.fetchDetailedWeather(event.cityName);
+        yield WeatherDetailedState(weather);
+      } on NetworkError {
+        yield WeatherError('Error');
+      }
+    }
   }
 }
