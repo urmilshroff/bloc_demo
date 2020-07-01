@@ -22,9 +22,18 @@ class MyHomePage extends StatelessWidget {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _counter.add(CounterEvents.increment),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () => _counter.add(CounterEvents.increment),
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.remove),
+            onPressed: () => _counter.add(CounterEvents.decrement),
+          ),
+        ],
       ),
     );
   }
