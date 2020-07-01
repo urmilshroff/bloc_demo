@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       home: BlocProvider(
-        create: (BuildContext context) => CounterBloc(),
+        // allows MyHomePage to access CounterBloc
+        create: (BuildContext context) => CounterBloc(), // this is the bloc!
         child: MyHomePage(),
       ),
     );
