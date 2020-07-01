@@ -1,4 +1,3 @@
-import 'package:bloc_demo/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -9,8 +8,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'BLoC Demo',
       theme: ThemeData(
-        primaryColor: Colors.blue,
-        accentColor: Colors.purple,
+        primarySwatch: Colors.deepPurple,
+        brightness: Brightness.dark,
       ),
       home: MyHomePage(),
     );
