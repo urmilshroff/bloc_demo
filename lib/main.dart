@@ -8,15 +8,15 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'BLoC Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-      ),
-      home: BlocProvider(
-        // allows MyHomePage to access CounterBloc
-        create: (BuildContext context) => CounterBloc(0), // this is the bloc!
-        child: MyHomePage(),
+    return BlocProvider(
+      create: (BuildContext context) => CounterBloc(0), // this is the bloc!
+      // allows MaterialApp to access CounterBloc
+      child: MaterialApp(
+        title: 'BLoC Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+        ),
+        home: MyHomePage(),
       ),
     );
   }

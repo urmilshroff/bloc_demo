@@ -1,11 +1,11 @@
 import 'package:bloc_demo/blocs/counter_bloc.dart';
+import 'package:bloc_demo/pages/edit_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks
     final _counter = BlocProvider.of<CounterBloc>(context);
     // create the variable to use everywhere (imp!)
 
@@ -35,10 +35,12 @@ class MyHomePage extends StatelessWidget {
           ),
           FloatingActionButton(
             child: Icon(Icons.remove),
-            onPressed: () => _counter.add(CounterEvents.decrement),
-            // adds enum to _counter stream
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward),
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (BuildContext context) {
+          return MyEditPage();
+        })),
       ),
     );
   }
