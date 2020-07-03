@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         // allows MyHomePage to access CounterBloc
-        create: (BuildContext context) => CounterBloc(), // this is the bloc!
+        create: (BuildContext context) => CounterBloc(0), // this is the bloc!
         child: MyHomePage(),
       ),
     );
