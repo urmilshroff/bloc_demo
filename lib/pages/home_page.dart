@@ -6,9 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _counter = BlocProvider.of<CounterBloc>(context);
-    // create the variable to use everywhere (imp!)
-
     return Scaffold(
       appBar: AppBar(
         title: Text('BLoC Demo'),
@@ -25,16 +22,6 @@ class MyHomePage extends StatelessWidget {
           },
         ),
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () => _counter.add(CounterEvents.increment),
-            // adds enum to _counter stream
-          ),
-          FloatingActionButton(
-            child: Icon(Icons.remove),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_forward),
         onPressed: () => Navigator.push(context,
