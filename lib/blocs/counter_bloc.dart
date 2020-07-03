@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // keep events and bloc classes in the same file for simplicity
 
@@ -11,13 +12,16 @@ class CounterBloc extends Bloc<CounterEvents, int> {
   @override
   Stream<int> mapEventToState(CounterEvents event) async* {
     // async* allows yield (to emit values!)
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
 
     // switch case makes it easy
     switch (event) {
       case CounterEvents.increment:
+        _prefs.setInt('count', state + 1);
         yield state + 1; // yield is like a return without termination!
         break;
       case CounterEvents.decrement:
+        _prefs.setInt('count', state - 1);
         yield state - 1; // remember, state is an integer
         break;
     }
