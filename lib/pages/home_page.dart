@@ -1,17 +1,20 @@
-import 'package:bloc_demo/blocs/counter_bloc.dart';
-import 'package:bloc_demo/pages/edit_page.dart';
+import 'package:bloc_demo/blocs/note_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
+    final _counter = BlocProvider.of<NoteBloc>(context);
+    // create the variable to use everywhere (imp!)
+
     return Scaffold(
       appBar: AppBar(
         title: Text('BLoC Demo'),
       ),
       body: Center(
-        child: BlocBuilder<CounterBloc, int>(
+        child: BlocBuilder<NoteBloc, int>(
           // the <type> is important
           builder: (BuildContext context, state) {
             // like a StreamBuilder - it listens to state changes!
@@ -23,11 +26,8 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.arrow_forward),
-        onPressed: () => Navigator.push(context,
-            MaterialPageRoute(builder: (BuildContext context) {
-          return MyEditPage();
-        })),
+        child: Icon(Icons.edit),
+        onPressed: () => _counter.add(NoteEvents.create),
       ),
     );
   }
